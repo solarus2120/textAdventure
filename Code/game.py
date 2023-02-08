@@ -1,3 +1,5 @@
+import random
+
 import Code.actions
 import Data.config
 import Data.locations
@@ -11,6 +13,7 @@ def play():
             print(Code.actions.get_value_from_location_key(Code.actions.get_current_location(), 'Desc'))
         else:
             print('Your Torch has gone out. It is too dark to see')
+            gru_check()
 
         if Data.locations.current == 'Altar Room' \
                 and Code.actions.victory_condition():
@@ -50,6 +53,14 @@ def user_input():
         Code.actions.use_command(user_in[4:].upper())
     else:
         print("Invalid command. Please type 'help' for a list of valid commands")
+
+
+def gru_check():
+    check_value = random.randint(1, 6)
+    if check_value == 6:
+        print("In the darkness, you did not see what came for you./nYou are, however, most assuredly, dead.")
+        Code.actions.quit_game()
+
 
 # def generate_location():
 #    Data.locations_old.locations.append({'Location': 'TEST_LOCATION',
