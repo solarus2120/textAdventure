@@ -57,10 +57,12 @@ def user_input():
 
 
 def gru_check():
-    check_value = random.randint(1, 6)
-    if check_value == 6:
-        print("In the darkness, you did not see what came for you.\nYou are, however, most assuredly, dead.")
-        return True
+    if Data.config.light_level == 0:
+        check_value = random.randint(1, 6)
+        if check_value == 6:
+            print("In the darkness, you did not see what came for you.\nYou are, however, most assuredly, dead.")
+            return True
+    else: return False
 
 
 # def generate_location():
