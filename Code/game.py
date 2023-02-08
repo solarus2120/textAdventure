@@ -13,7 +13,6 @@ def play():
             print(Code.actions.get_value_from_location_key(Code.actions.get_current_location(), 'Desc'))
         else:
             print('Your Torch has gone out. It is too dark to see')
-            gru_check()
 
         if Data.locations.current == 'Altar Room' \
                 and Code.actions.victory_condition():
@@ -30,6 +29,8 @@ def play():
             print(Code.actions.get_value_from_location_key(Code.actions.get_current_location(), 'Desc'))
             time.sleep(2)
             print('You won. Well Done.')
+            Code.actions.quit_game()
+        elif gru_check():
             Code.actions.quit_game()
         else:
             user_input()
@@ -59,7 +60,7 @@ def gru_check():
     check_value = random.randint(1, 6)
     if check_value == 6:
         print("In the darkness, you did not see what came for you.\nYou are, however, most assuredly, dead.")
-        Code.actions.quit_game()
+        return True
 
 
 # def generate_location():
